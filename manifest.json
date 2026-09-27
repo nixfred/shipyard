@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "nixfred.shipyard",
+  "name": "Shipyard",
+  "version": "1.0.0",
+  "author": "nixfred",
+  "license": "MIT",
+  "description": "What shipped today. Counts your commits across every local git repo (~/Projects, ~/.claude, ~/.config/omarchy) and shows them on the bar, with a day streak, a 16-week heatmap, an hour-of-day histogram, top repos and a live commit feed. Read-only, local, no network.",
+  "kinds": ["service", "bar-widget"],
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Shipyard",
+    "description": "Commits shipped today and the day streak. Click for the cockpit.",
+    "category": "System",
+    "aliases": ["ship", "commits", "git", "streak", "shipyard", "output"],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": { "refreshSec": 60, "showStreak": true },
+    "schema": [
+      { "key": "refreshSec", "type": "integer", "label": "Refresh interval (seconds)",
+        "description": "How often repos are rescanned. Unchanged repos are served from cache, so this is cheap.",
+        "min": 15, "max": 900, "defaultValue": 60 },
+      { "key": "showStreak", "type": "boolean", "label": "Show the streak",
+        "description": "Adds the day streak beside today's count.", "defaultValue": true }
+    ]
+  },
+  "repository": "https://github.com/nixfred/shipyard",
+  "homepage": "https://nixfred.com"
+}
